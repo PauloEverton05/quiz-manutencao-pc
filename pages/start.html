@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Manutenção de Computadores</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz de Manutenção de Computadores</h1>
+        <div class="timer">
+            <span id="timer">180 segundos restantes</span>
+        </div>
+        
+        <div class="question-image">
+            <img id="question-image" src="" alt="Imagem da pergunta" />
+        </div>
+        
+        <div id="question-container" class="question-container">
+            <div class="question">
+                <div class="question-number" id="question-number"></div>
+                <p id="question-text"></p>
+            </div>
+            <div class="answers">
+                <button class="answer-btn" id="answer-0"></button>
+                <button class="answer-btn" id="answer-1"></button>
+                <button class="answer-btn" id="answer-2"></button>
+                <button class="answer-btn" id="answer-3"></button>
+            </div>
+        </div>
+        <div id="result" class="result" style="display:none;"></div>
+        <div id="finish" class="finish" style="display:none;">
+            <h2>Tempo esgotado!</h2>
+            <p class="text-timer">Você não completou o quiz a tempo. Tente novamente.</p>
+        </div>
+    </div>
+    <script src="../script/script.js"></script>
+</body>
+</html>
