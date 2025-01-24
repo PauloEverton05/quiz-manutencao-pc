@@ -11,8 +11,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow: auto; /* Permite rolagem */
     padding: 20px;
     background-image: url('https://t4.ftcdn.net/jpg/04/61/47/03/360_F_461470323_6TMQSkCCs9XQoTtyer8VCsFypxwRiDGU.jpg');
     background-repeat: no-repeat;
@@ -21,6 +21,19 @@ body {
 }
 
 .container {
+    background-color: #16222a;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+    min-height: 100vh; /* Garante que o conteúdo possa crescer */
+}
+
+.container1 {
     background-color: #16222a;
     border-radius: 16px;
     padding: 40px;
