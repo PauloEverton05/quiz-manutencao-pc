@@ -151,7 +151,6 @@ function startTimer() {
     }, 1000);
 }
 
-
 const questionImages = [
     '../images/processador.webp',   // Imagem para a primeira pergunta
     '../images/bios.jpg',          // Imagem para a segunda pergunta
@@ -196,32 +195,46 @@ function loadQuestion() {
         questionImageElement.src = questionImages[currentQuestionIndex];
     } else {
         clearInterval(countdownInterval);
-        
+
         // Exibe a tela de resultado
-        resultScreen.textContent = `Você terminou o quiz com ${score} pontos!`;
         resultScreen.style.display = 'block';
-        
-        // Esconde a tela de perguntas
         document.getElementById('question-container').style.display = 'none';
-        
-        // Mostra a imagem de parabéns
+
+        // Remove a imagem da tela de resultados
         const questionImageElement = document.getElementById('question-image');
-        questionImageElement.src = '../images/parabens.webp';
+        questionImageElement.style.display = 'none'; // Oculta a imagem
+
+        // Exibe a mensagem com o número de acertos
+        const resultMessage = document.createElement('div');
+        resultMessage.classList.add('result-message');
+
+        // Mensagem com base no número de acertos
+        if (score === 20) {
+            resultMessage.textContent = `Parabéns, você é um verdadeiro técnico!!! Acertou ${score} de ${questions.length} questões.`;
+        } else if (score >= 13) {
+            resultMessage.textContent = `Muito bem!! Acertou ${score} de ${questions.length} questões.`;
+        } else {
+            resultMessage.textContent = `Você precisa estudar mais!! Acertou ${score} de ${questions.length} questões.`;
+        }
+
+        // Adiciona a mensagem ao espaço onde estava a imagem
+        const questionImageContainer = document.querySelector('.question-image');
+        questionImageContainer.innerHTML = ''; // Limpa o conteúdo anterior
+        questionImageContainer.appendChild(resultMessage);
 
         // Adiciona um botão para voltar ao index.html
-    const backButton = document.createElement('button');
-    backButton.textContent = 'Reiniciar Quiz';
-    backButton.classList.add('answer-btn'); // Aplica a classe de estilização existente
-    backButton.style.marginTop = '20px'; // Adiciona um espaçamento entre o texto de resultado e o botão
-    backButton.onclick = () => {
-        window.location.href = '../index.html'; // Redireciona para o index.html
-    };
+        const backButton = document.createElement('button');
+        backButton.textContent = 'Reiniciar Quiz';
+        backButton.classList.add('answer-btn'); // Aplica a classe de estilização existente
+        backButton.style.marginTop = '20px'; // Adiciona um espaçamento entre o texto de resultado e o botão
+        backButton.onclick = () => {
+            window.location.href = '../index.html'; // Redireciona para o index.html
+        };
 
-    // Adiciona o botão à tela de resultado
-    resultScreen.appendChild(backButton);
+        // Adiciona o botão à tela de resultado
+        resultScreen.appendChild(backButton);
     }
 }
-
 
 function handleAnswer(index) {
     const question = questions[currentQuestionIndex];
