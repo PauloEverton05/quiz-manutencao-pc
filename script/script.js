@@ -103,7 +103,7 @@ const questions = [
 
 let currentQuestionIndex = 0;
 let score = 0;
-let timer = 180;
+let timer = 300;
 let countdownInterval;
 let blinkInterval;
 const timerElement = document.getElementById('timer');
